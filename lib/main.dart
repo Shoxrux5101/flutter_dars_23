@@ -3,6 +3,7 @@ import 'indicatorWidget.dart';
 import 'onBoardingButton.dart';
 import 'onBoardingPage.dart';
 import 'skipBackButton.dart';
+import 'loginRegisterPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -92,14 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 SkipBackButton(
                   isFirstPage: activeIndex == 0,
                   onTap: () {
-                    if (activeIndex == 0) {
-                      controller.jumpToPage(page.length - 1);
-                    } else {
-                      controller.previousPage(
-                        duration: Duration(milliseconds: 300),
-                        curve: Curves.easeInOut,
-                      );
-                    }
+                    Navigator.push(context,MaterialPageRoute(builder: (context) => LoginRegisterPage(),),);
                   },
                 ),
               ],
