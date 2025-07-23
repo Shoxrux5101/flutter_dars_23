@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:untitled1/onBoarding/registerNowPage.dart';
 
 class LoginRegisterPage extends StatefulWidget {
   const LoginRegisterPage({super.key});
@@ -56,6 +57,9 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
                   ),
                   TextField(
                     decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
                       filled: true,
                       fillColor: Color(0xFF3F3F3F),
                       hintText: "Username or Email",
@@ -74,7 +78,12 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
                     height: 40,
                   ),
                   TextField(
+                    obscureText: obscureText,
+                    controller: controller,
                     decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
                       filled: true,
                       fillColor: Color(0xFF3F3F3F),
                       hintText: "Password",
@@ -88,6 +97,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
                         color: Colors.grey,
                       ),
                       suffixIcon: IconButton(
+                        color: Colors.grey,
                         onPressed: () {
                           obscureText = !obscureText;
                           setState(() {});
@@ -136,7 +146,6 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
                     height: 35,
                   ),
                   Align(
-                    alignment: Alignment.centerRight,
                     child: Text(
                       "Or login with",
                       style: TextStyle(
@@ -145,6 +154,44 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
                         color: Color(0xFFEAEAEA),
                       ),
                     ),
+                  ),
+                  SizedBox(
+                    height: 34,
+                  ),
+                  Row(
+                    spacing: 40,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset("assets/google.png"),
+                      Image.asset("assets/facebook.png"),
+                    ],
+                  ),
+                  SizedBox(height: 150,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Not have an account?",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 14,
+                          color: Colors.white,
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterNowPage()),);
+                      },
+                        child: Text(
+                          " Register now",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 14,
+                            color: Color(0xFF00A3B7),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),

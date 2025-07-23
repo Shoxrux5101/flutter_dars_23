@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'indicatorWidget.dart';
-import 'onBoardingButton.dart';
-import 'onBoardingPage.dart';
-import 'skipBackButton.dart';
-import 'loginRegisterPage.dart';
+import 'onBoarding/indicatorWidget.dart';
+import 'onBoarding/onBoardingButton.dart';
+import 'onBoarding/onBoardingPage.dart';
+import 'onBoarding/skipBackButton.dart';
+import 'onBoarding/loginRegisterPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,7 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final controller = PageController();
 
   @override
-  void dispose(){
+  void dispose() {
     controller.dispose();
     super.dispose();
   }
@@ -93,7 +93,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 SkipBackButton(
                   isFirstPage: activeIndex == 0,
                   onTap: () {
-                    Navigator.push(context,MaterialPageRoute(builder: (context) => LoginRegisterPage(),),);
+                    activeIndex == 0 ? Navigator.push(
+                      context, MaterialPageRoute(
+                      builder: (context) => LoginRegisterPage(),),):
+                    controller.previousPage(
+                        duration: Duration(milliseconds: 300),
+                        curve: Curves.easeInOut);
                   },
                 ),
               ],
